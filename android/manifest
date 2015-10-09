@@ -1,0 +1,17 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 3.0.8
+apiversion: 2
+description: 极光推送的android module封装
+author: liumingxing
+license: MIT
+copyright: Copyright (c) 2014 by Your Company
+
+# these should not be edited
+name: jpush
+moduleid: com.mamashai.jpush
+guid: db25849c-6d3a-4bce-a1de-1285b9ac3425
+platform: android
+minsdk: 3.1.3.GA
