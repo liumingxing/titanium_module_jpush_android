@@ -1,5 +1,5 @@
 # titanium_module_jpush_android
-* 极光推送的安卓封装（没做ios平台的，我用rpush在自己的服务器发）
+* 极光推送的安卓封装（ios平台我用rpush在自己的服务器发，没做module）
 * 作者刘明星 lmxbitihero@126.com
 
 Appcelerator安卓开发比较悲催，无法使用google的gcm，只能绕道，用国内的服务，极光推送还不错。
