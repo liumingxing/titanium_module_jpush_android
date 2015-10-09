@@ -23,7 +23,7 @@ if (str && str.length > 0){
 
 //用户点击了推送
 var bc = Ti.Android.createBroadcastReceiver({
-    	onReceived : function(e) {
+	onReceived : function(e) {
 	        Ti.API.info("cn.jpush.android.PUSH_ID: " + e.intent.getStringExtra("cn.jpush.android.PUSH_ID"));
 		Ti.API.info("app: " 							+ e.intent.getStringExtra("app"));
 		Ti.API.info("cn.jpush.android.ALERT: " 			+ e.intent.getStringExtra("cn.jpush.android.ALERT"));
@@ -38,7 +38,7 @@ var bc = Ti.Android.createBroadcastReceiver({
 		if (str && str.length > 0){
 			show_alert("提示", e.intent.getStringExtra("cn.jpush.android.EXTRA"));
 		}
-    	}
+	}
 });
 		 
 Ti.Android.registerBroadcastReceiver(bc, ['mamashai_jpush']);
