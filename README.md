@@ -23,22 +23,22 @@ if (str && str.length > 0){
 
 //用户点击了推送
 var bc = Ti.Android.createBroadcastReceiver({
-    onReceived : function(e) {
-        Ti.API.info("cn.jpush.android.PUSH_ID: " + e.intent.getStringExtra("cn.jpush.android.PUSH_ID"));
-	Ti.API.info("app: " 							+ e.intent.getStringExtra("app"));
-	Ti.API.info("cn.jpush.android.ALERT: " 			+ e.intent.getStringExtra("cn.jpush.android.ALERT"));
-	Ti.API.info("cn.jpush.android.EXTRA: " 			+ e.intent.getStringExtra("cn.jpush.android.EXTRA"));
-	Ti.API.info("cn.jpush.android.NOTIFICATION_ID: "+ e.intent.getStringExtra("cn.jpush.android.NOTIFICATION_ID"));
-	Ti.API.info("cn.jpush.android.NOTIFICATION_CONTENT_TITLE: " + e.intent.getStringExtra("cn.jpush.android.NOTIFICATION_CONTENT_TITLE"));
-	Ti.API.info("cn.jpush.android.MSG_ID: " 		+ e.intent.getStringExtra("cn.jpush.android.MSG_ID"));
-	Ti.API.info("cn.jpush.android.TITLE: " 			+ e.intent.getStringExtra("cn.jpush.android.TITLE"));
-	Ti.API.info("cn.jpush.android.MESSAGE: " 		+ e.intent.getStringExtra("cn.jpush.android.MESSAGE"));
-	Ti.API.info("cn.jpush.android.CONTENT_TYPE: " 	+ e.intent.getStringExtra("cn.jpush.android.CONTENT_TYPE"));
-	var str = e.intent.getStringExtra("cn.jpush.android.EXTRA"); 
-	if (str && str.length > 0){
-		show_alert("提示", e.intent.getStringExtra("cn.jpush.android.EXTRA"));
-	}
-    }
+    	onReceived : function(e) {
+	        Ti.API.info("cn.jpush.android.PUSH_ID: " + e.intent.getStringExtra("cn.jpush.android.PUSH_ID"));
+		Ti.API.info("app: " 							+ e.intent.getStringExtra("app"));
+		Ti.API.info("cn.jpush.android.ALERT: " 			+ e.intent.getStringExtra("cn.jpush.android.ALERT"));
+		Ti.API.info("cn.jpush.android.EXTRA: " 			+ e.intent.getStringExtra("cn.jpush.android.EXTRA"));
+		Ti.API.info("cn.jpush.android.NOTIFICATION_ID: "+ e.intent.getStringExtra("cn.jpush.android.NOTIFICATION_ID"));
+		Ti.API.info("cn.jpush.android.NOTIFICATION_CONTENT_TITLE: " + e.intent.getStringExtra("cn.jpush.android.NOTIFICATION_CONTENT_TITLE"));
+		Ti.API.info("cn.jpush.android.MSG_ID: " 		+ e.intent.getStringExtra("cn.jpush.android.MSG_ID"));
+		Ti.API.info("cn.jpush.android.TITLE: " 			+ e.intent.getStringExtra("cn.jpush.android.TITLE"));
+		Ti.API.info("cn.jpush.android.MESSAGE: " 		+ e.intent.getStringExtra("cn.jpush.android.MESSAGE"));
+		Ti.API.info("cn.jpush.android.CONTENT_TYPE: " 	+ e.intent.getStringExtra("cn.jpush.android.CONTENT_TYPE"));
+		var str = e.intent.getStringExtra("cn.jpush.android.EXTRA"); 
+		if (str && str.length > 0){
+			show_alert("提示", e.intent.getStringExtra("cn.jpush.android.EXTRA"));
+		}
+    	}
 });
 		 
 Ti.Android.registerBroadcastReceiver(bc, ['mamashai_jpush']);
