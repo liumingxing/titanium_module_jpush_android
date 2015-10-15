@@ -60,3 +60,75 @@ win.addEventListener("close", function(){
 	Ti.Android.unregisterBroadcastReceiver(bc2);
 });	
 ```	
+
+使用module前还需要对tiapp.xml进行配置，在android->mainifest->application下添加如下配置信息
+```xml
+<service android:enabled="true" android:exported="false" android:name="cn.jpush.android.service.PushService">
+                    <intent-filter>
+                        <action android:name="cn.jpush.android.intent.REGISTER"/>
+                        <action android:name="cn.jpush.android.intent.REPORT"/>
+                        <action android:name="cn.jpush.android.intent.PushService"/>
+                        <action android:name="cn.jpush.android.intent.PUSH_TIME"/>
+                    </intent-filter>
+</service>
+                <!-- Required -->
+                <receiver android:enabled="true" android:name="cn.jpush.android.service.PushReceiver">
+                    <intent-filter android:priority="1000">
+                        <!--since 1.3.5 -->
+                        <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY"/>
+                        <!--since 1.3.5 -->
+                        <category android:name="com.mamashai.babycalendar"/>
+                        <!--since 1.3.5 -->
+                    </intent-filter>
+                    <!--since 1.3.5 -->
+                    <intent-filter>
+                        <action android:name="android.intent.action.USER_PRESENT"/>
+                        <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                    </intent-filter>
+                    <intent-filter>
+                        <action android:name="android.intent.action.PACKAGE_ADDED"/>
+                        <action android:name="android.intent.action.PACKAGE_REMOVED"/>
+                        <data android:scheme="package"/>
+                    </intent-filter>
+                </receiver>
+                <receiver android:name="com.mamashai.jpush.MamashaiReceiver">
+                    <intent-filter>
+                        <action android:name="cn.jpush.android.intent.REGISTRATION"/>
+                        <!--Required  用户注册SDK的intent-->
+                        <action android:name="cn.jpush.android.intent.UNREGISTRATION"/>
+                        <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED"/>
+                        <!--Required  用户接收SDK消息的intent-->
+                        <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/>
+                        <!--Required  用户接收SDK通知栏信息的intent-->
+                        <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/>
+                        <!--Required  用户打开自定义通知栏的intent-->
+                        <action android:name="cn.jpush.android.intent.ACTION_RICHPUSH_CALLBACK"/>
+                        <!--Optional 用户接受Rich Push Javascript 回调函数的intent-->
+                        <action android:name="cn.jpush.android.intent.CONNECTION"/>
+                        <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                        <category android:name="com.mamashai.babycalendar"/>
+                    </intent-filter>
+                </receiver>
+                <!-- Required SDK核心功能-->
+                <activity
+                    android:configChanges="orientation|keyboardHidden"
+                    android:name="cn.jpush.android.ui.PushActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+                    <intent-filter>
+                        <action android:name="cn.jpush.android.ui.PushActivity"/>
+                        <category android:name="android.intent.category.DEFAULT"/>
+                        <category android:name="com.mamashai.babycalendar"/>
+                    </intent-filter>
+                </activity>
+                <!-- Required SDK核心功能-->
+                <service android:enabled="true" android:exported="false" android:name="cn.jpush.android.service.DownloadService"/>
+                <!-- Required SDK核心功能-->
+                <receiver android:name="cn.jpush.android.service.AlarmReceiver"/>
+                <!-- Required. For publish channel feature -->
+                <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
+                <!-- 例如: -->
+                <!-- 发到 Google Play 的APK可以设置为 google-play; -->
+                <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
+                <!-- 目前这个渠道统计功能的报表还未开放。-->
+                <meta-data android:name="JPUSH_CHANNEL" android:value="c_1980"/>
+                <meta-data android:name="JPUSH_APPKEY" android:value="b789c8ed387ca31a1569c932"/>
+```
