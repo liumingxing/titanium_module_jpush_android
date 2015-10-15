@@ -61,7 +61,7 @@ win.addEventListener("close", function(){
 });	
 ```	
 
-使用module前还需要对tiapp.xml进行配置，在android->mainifest->application下添加如下配置信息
+使用module前还需要对tiapp.xml进行配置，在android->mainifest->application下添加如下配置信息，部分信息如包名、jpush appkey需要改成自己的值。
 ```xml
 <service android:enabled="true" android:exported="false" android:name="cn.jpush.android.service.PushService">
 	<intent-filter>
